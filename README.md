@@ -1,2 +1,2 @@
-# Manalitics
-Manalitics is an open source project for building, analyzing, and optimizing commander decks in MTG.
+# Manalytics
+Manalytics is an open source project for building, analyzing, and optimizing commander decks in MTG.
