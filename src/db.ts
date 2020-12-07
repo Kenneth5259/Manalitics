@@ -18,7 +18,6 @@ class Database {
             if(err) {
                 return console.error('Error: ' + err);
             }
-            console.log("Connection Successful");
         })
     }
     private initializeDatabase() {

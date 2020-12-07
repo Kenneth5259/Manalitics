@@ -1,6 +1,5 @@
 import * as express from 'express';
-import Database from '../../db';
-import Card from '../../models/card.model';
+import CardModel from '../../models/card.model';
 
 class CardController {
 
@@ -27,7 +26,7 @@ class CardController {
      * retrieve all cards in the database 
      * */ 
     getAllCards(request: express.Request, response: express.Response) {
-        const connection = new Database().connection;
+        /*const connection = new Database().connection;
     
         connection.query("SELECT * FROM cards LIMIT 1000", (err, results, fields) => {
             if(err) {
@@ -39,7 +38,7 @@ class CardController {
                 cards: results
             });
         });
-        connection.end();
+        connection.end();*/
         
     }
     /**
@@ -50,7 +49,25 @@ class CardController {
      * /api/cards/search/id/:id
      */
     getCardById(request: express.Request, response: express.Response) {
-        response.send(request.params);
+        const id = request.params.id;
+
+        new CardModel().getCardById(id)
+            .then(card => {
+                console.log(card);
+                response.status(200).send({
+                    message: "Result Found",
+                    card: card
+                })
+            })
+            .catch(err => {
+                console.error(err);
+                response.status(200).send({
+                    message: "Result Not Found",
+                    card: null
+                })
+            });
+        
+        
     }
 }
 
