@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import {CardsService} from '../../services/cards.service';
+
+import Card from '../../classes/card';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  searchResults: Card[] = [];
+  constructor(private cardsService: CardsService) { 
+  }
 
   ngOnInit(): void {
+    
+  }
+
+  onSearchInputChange(input: string): void {
+    if(input.length <= 0) { return ;}
+    this.cardsService.getCardsByName(input).subscribe((res) => {
+      console.log(res);
+      if(res.results > 0) {
+        this.searchResults = res.cards;
+      } else {
+        this.searchResults = [];
+      }
+      console.log(this.searchResults);
+    })
   }
 
 }

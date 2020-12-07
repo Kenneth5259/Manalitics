@@ -77,7 +77,7 @@ class CardController {
             .then(cards => {
                 response.status(200).send({
                     message: "Results Found",
-                    amount: cards.length,
+                    results: cards.length,
                     cards: cards
                 })
             })

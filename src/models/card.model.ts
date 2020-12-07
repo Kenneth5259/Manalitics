@@ -161,7 +161,7 @@ class CardModel  {
         const cards = new Promise<Card[]>((resolve, reject) => {
 
             // perform the query
-            connection.query(`SELECT * FROM cards WHERE name LIKE "%${name}%"`, (err: MysqlError, results) => {
+            connection.query(`SELECT * FROM cards WHERE name LIKE "%${name}%" LIMIT 1000`, (err: MysqlError, results) => {
 
                 // check for an error, reject if true
                 if(err) {

@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bodyparser from 'body-parser';
+import * as cors from 'cors';
 
 class App {
 
@@ -38,6 +39,7 @@ class App {
      * local middlewares second
      */
     private initializeMiddlewares() {
+        this.app.use(cors());
         this.app.use(bodyparser.urlencoded({extended: true}));
         this.app.use(bodyparser.json());
     }
