@@ -1,6 +1,7 @@
+// import Database Class
 import Database from '../db';
-import * as express from 'express';
 
+// Define an interface for a Card
 interface Card {
     id: number;
     name: string;
@@ -24,47 +25,129 @@ interface Card {
     color_identity?: string; 
 }
 
+
+// Class for interfacing with database
 class CardModel  {
 
-    public async getCardById(id: string): Promise<Card> {
-        const connection = new Database().connection;
-        
+    /**
+     * 
+     * @param object JSON Casted RowDataPacket from MySQL
+     * 
+     * conforms each property to the interface and returns
+     */
+    private conformToInterface(object): Card {
+        return {
+            id: object.id,
+            name: object.name,
+            set: object.set,
+            set_code: object.setCode,
+            type: object.type,
+            power: object.power,
+            toughness: object.toughness,
+            loyalty: object.loyalty,
+            manacost: object.manacost,
+            converted_manacost: object.converted_manacost,
+            artist: object.artist,
+            flavor: object.flavor,
+            color: object.color,
+            number: object.number,
+            rarity: object.rarity,
+            rating: object.rating,
+            ruling: object.ruling,
+            ability: object.ability,
+            number_int: object.number_int,
+            color_identity: object.color_identity 
+        }
+    }
 
-        const card = new Promise<Card>((resolve, reject) => {
-            connection.query(`SELECT * FROM cards where id=${id}`, (err, results) => {
+    /**
+     * Asynchronous call to all cards
+     */
+    public async getAllCards(): Promise<Card[]> {
+
+        // create a new connection instance
+        const connection = new Database().connection;
+
+        // create a cards promise
+        const cards = new Promise<Card[]>((resolve, reject) => {
+
+            // run the query, limited to 1000
+            connection.query("SELECT * FROM cards LIMIT 1000", (err, results, fields) => {
+
+                // check for error, reject if true
                 if(err) {
                     reject(new Error("Issue with Query"));
                     throw err;
                 }
-                let card = JSON.parse(JSON.stringify(results[0]));
-                let res: Card = {
-                    id: card.id,
-                    name: card.name,
-                    set: card.set,
-                    set_code: card.setCode,
-                    type: card.type,
-                    power: card.power,
-                    toughness: card.toughness,
-                    loyalty: card.loyalty,
-                    manacost: card.manacost,
-                    converted_manacost: card.converted_manacost,
-                    artist: card.artist,
-                    flavor: card.flavor,
-                    color: card.color,
-                    number: card.number,
-                    rarity: card.rarity,
-                    rating: card.rating,
-                    ruling: card.ruling,
-                    ability: card.ability,
-                    number_int: card.number_int,
-                    color_identity: card.color_identity 
+
+                // define an array of cards
+                let cards: Card[] = [];
+
+                // map the query result to the interface
+                results.map(c => {
+
+                    // JSON stringify and parsing resolves an issue with RowDataPacket accessibility
+                    let card = JSON.parse(JSON.stringify(c));
+
+                    // cast each property
+                    let res: Card = this.conformToInterface(card);
+
+                    // push to cards array
+                    cards.push(res);
+                })
+
+                // resolve the promise after mapping
+                resolve(cards);
+            });
+
+            // close the database connection
+            connection.end();
+            });
+        
+        // return the promise
+        return cards;
+    
+        
+    }
+
+
+    /**
+     * 
+     * @param id 
+     * Asynchronous call to retrieve a card by id
+     */
+    public async getCardById(id: string): Promise<Card> {
+
+        // create a new database connection instance
+        const connection = new Database().connection;
+
+        // create a new promise
+        const card = new Promise<Card>((resolve, reject) => {
+
+            // run the query
+            connection.query(`SELECT * FROM cards where id=${id}`, (err, results) => {
+
+                // check for any error, reject promise if necessary
+                if(err) {
+                    reject(new Error("Issue with Query"));
+                    throw err;
                 }
 
-               
+                // Handle RowDataPacket conversion
+                let card = JSON.parse(JSON.stringify(results[0]));
+
+                // conform to interface
+                let res: Card = this.conformToInterface(card);
+                
+                // resolve the promise
                 resolve(res);
+
+                // close the DB connection
                 connection.end();
             });
         })
+        
+        // return the promise
         return card;   
     }
 }

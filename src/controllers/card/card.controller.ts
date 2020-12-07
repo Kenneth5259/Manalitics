@@ -16,7 +16,6 @@ class CardController {
 
     // function to register every route
     public initializeRoutes() {
-        console.log(`${this.path}/search/id/`);
         this.router.get(this.path + '/search/id/:id', this.getCardById);
         this.router.get(this.path, this.getAllCards);
     }
@@ -26,19 +25,22 @@ class CardController {
      * retrieve all cards in the database 
      * */ 
     getAllCards(request: express.Request, response: express.Response) {
-        /*const connection = new Database().connection;
-    
-        connection.query("SELECT * FROM cards LIMIT 1000", (err, results, fields) => {
-            if(err) {
-                throw err;
-            }
-            response.status(200).send({
-                message: "Called!",
-                amount: results.length,
-                cards: results
-            });
-        });
-        connection.end();*/
+        
+        new CardModel().getAllCards()
+            .then(cards => {
+                response.status(200).send({
+                    message: "Results Found",
+                    results: cards.length,
+                    cards: cards
+                })
+            })
+            .catch(err => {
+                console.error(err);
+                response.status(200).send({
+                    message: "Cards not Found",
+                    cards: null
+                })
+            })
         
     }
     /**
