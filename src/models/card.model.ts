@@ -1,4 +1,5 @@
 // import Database Class
+import { MysqlError } from 'mysql';
 import Database from '../db';
 
 // Define an interface for a Card
@@ -149,6 +150,49 @@ class CardModel  {
         
         // return the promise
         return card;   
+    }
+
+    public async getCardsByName(name: string): Promise<Card[]> {
+
+        // create a new database connection instance
+        const connection = new Database().connection;
+
+        // create a new promise for the card array
+        const cards = new Promise<Card[]>((resolve, reject) => {
+
+            // perform the query
+            connection.query(`SELECT * FROM cards WHERE name LIKE "%${name}%"`, (err: MysqlError, results) => {
+
+                // check for an error, reject if true
+                if(err) {
+                    reject(new Error("Issue with Query"));
+                    throw(err);
+                }
+
+                // define a card array
+                let cards: Card[] = [];
+
+                // map each result
+                results.map(c => {
+
+                    // parse information from RowDataPacket
+                    let card = JSON.parse(JSON.stringify(c));
+
+                    // conform the json object to the card interface
+                    let res: Card = this.conformToInterface(card);
+
+                    cards.push(res);
+                });
+
+                // resolve the promise
+                resolve(cards);
+
+                // close the database connection
+                connection.end();
+            })
+        })
+
+        return cards;
     }
 }
 

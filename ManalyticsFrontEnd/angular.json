@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "ManalyticsFrontEnd"
+  "defaultProject": "ManalyticsFrontEnd",
+  "cli": {
+    "analytics": false
+  }
 }

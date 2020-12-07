@@ -17,6 +17,7 @@ class CardController {
     // function to register every route
     public initializeRoutes() {
         this.router.get(this.path + '/search/id/:id', this.getCardById);
+        this.router.get(this.path + '/search/name/:name', this.getCardsByName);
         this.router.get(this.path, this.getAllCards);
     }
 
@@ -55,7 +56,6 @@ class CardController {
 
         new CardModel().getCardById(id)
             .then(card => {
-                console.log(card);
                 response.status(200).send({
                     message: "Result Found",
                     card: card
@@ -68,8 +68,26 @@ class CardController {
                     card: null
                 })
             });
-        
-        
+    }
+
+    getCardsByName(request: express.Request, response: express.Response) {
+        const name: string = request.params.name;
+
+        new CardModel().getCardsByName(name)
+            .then(cards => {
+                response.status(200).send({
+                    message: "Results Found",
+                    amount: cards.length,
+                    cards: cards
+                })
+            })
+            .catch(err => {
+                console.error(err);
+                response.status(200).send({
+                    message: "Results Not Found",
+                    cards: null
+                })
+            });
     }
 }
 

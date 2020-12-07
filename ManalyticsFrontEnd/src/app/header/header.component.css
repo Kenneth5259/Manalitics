@@ -1,0 +1,12 @@
+.header {
+    width: 100vw;
+    height: 3rem;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__title {
+    color: white;
+    padding: 0.25rem 0.5rem;
+}
