@@ -29,6 +29,8 @@ class App {
         this.initializeControllers(controllers);
     }
 
+    
+
     /**
      * Initialize all middlewares
      * node modules intiialized firt
@@ -53,6 +55,8 @@ class App {
         })
     }
 
+    
+    
     // custom listen method to keep class interface similar to express
     public listen() {
         this.app.listen(this.port, () => {
