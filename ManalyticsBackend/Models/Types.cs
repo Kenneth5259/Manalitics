@@ -14,11 +14,16 @@ namespace ManalyticsBackend.Models
         Scheme = 10,
         Sorcery = 11, 
         Tribal = 12,
-        Vanguard = 13
+        Vanguard = 13,
+        Legendary = 14
     }
 
     public class PrimaryType
     {
-        public Primaries Type {get; set;}
+        public Primaries PrimaryTypeId {get; set;}
+    }
+    public class SubType
+    {
+        public string SubTypeId {get; set;}
     }
 }

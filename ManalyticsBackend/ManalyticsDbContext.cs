@@ -8,5 +8,6 @@ namespace ManalyticsBackend
         public ManalyticsDbContext(DbContextOptions<ManalyticsDbContext> options) : base(options) {}
 
         public DbSet<Card> Cards {get; set;}
+        public DbSet<Set> Sets {get; set;}
     }
 }
