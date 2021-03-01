@@ -26,6 +26,7 @@ namespace ManalyticsBackend.Models
         public Set ContainingSet {get; set;}
         // Number assigned to the card in that set release
         public int SetNumber {get; set;}
-        
+        // Card Rarity
+        public CardRarity CRarity {get;set;}
     }
 }

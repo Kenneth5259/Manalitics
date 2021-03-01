@@ -15,7 +15,8 @@ namespace ManalyticsBackend.Models
         Sorcery = 11, 
         Tribal = 12,
         Vanguard = 13,
-        Legendary = 14
+        Legendary = 14,
+        Basic = 15
     }
 
     public class PrimaryType
