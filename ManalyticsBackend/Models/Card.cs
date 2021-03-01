@@ -28,5 +28,13 @@ namespace ManalyticsBackend.Models
         public int SetNumber {get; set;}
         // Card Rarity
         public CardRarity CRarity {get;set;}
+        // List of Abilities 
+        public List<Ability> Abilities {get; set;}
+        // Power of the Card if creature
+        public int Power {get; set;}
+        // Toughtness of the Card if Creature
+        public int Toughtness {get; set;}
+        // Loyalty of the card if Planeswalker
+        public int Loyalty {get; set;}
     }
 }
