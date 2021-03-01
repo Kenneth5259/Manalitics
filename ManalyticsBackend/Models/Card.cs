@@ -13,7 +13,7 @@ namespace ManalyticsBackend.Models
         // Sub Typing of the Card
         public List<SubType> SubTypes {get; set;}
         // Color Identity of the Card
-        public string ColorIdentity {get; set;}
+        public ColorIdentity ColorIdentity {get; set;}
         // Total Casting Cost of the Card
         public string ManaCost {get; set;}
         // Converted Mana Cost for the given card
