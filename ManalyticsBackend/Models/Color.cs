@@ -24,7 +24,7 @@ namespace ManalyticsBackend.Models
         UG = 13,
         BR = 14,
         BG = 15,
-        RG = 16
+        RG = 16,
 
         // Tri Colors
 
@@ -37,7 +37,7 @@ namespace ManalyticsBackend.Models
         URW = 23,
         BGU = 24,
         RWB = 25,
-        GUR = 26
+        GUR = 26,
 
         // 4 Color
         WUBR = 27,

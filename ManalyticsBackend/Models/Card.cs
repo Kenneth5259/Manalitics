@@ -24,7 +24,8 @@ namespace ManalyticsBackend.Models
         public string FlavorText {get; set;}
         // Set which contains the given set
         public Set ContainingSet {get; set;}
-        
+        // Number assigned to the card in that set release
+        public int SetNumber {get; set;}
         
     }
 }

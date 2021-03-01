@@ -3,14 +3,16 @@ using System;
 using ManalyticsBackend;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ManalyticsBackend.Migrations
 {
     [DbContext(typeof(ManalyticsDbContext))]
-    partial class ManalyticsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210301204210_IncludeSetNumber")]
+    partial class IncludeSetNumber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
