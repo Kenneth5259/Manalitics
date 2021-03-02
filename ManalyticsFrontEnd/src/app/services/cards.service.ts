@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-import Card from '../classes/card';
+import Card from '../shared/models/card';
 
 @Injectable({
   providedIn: 'root'

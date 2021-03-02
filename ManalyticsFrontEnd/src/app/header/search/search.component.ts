@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {CardsService} from '../../services/cards.service';
 
-import Card from '../../classes/card';
+import Card from '../../shared/models/card';
 
 @Component({
   selector: 'app-search',
