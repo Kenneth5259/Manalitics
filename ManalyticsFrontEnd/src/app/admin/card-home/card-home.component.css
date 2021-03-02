@@ -1,7 +1,7 @@
 /*
     Kenneht Carroll
     3/2/2021
-    Revision 1
+    Revision 2
     Styles for Card Home Component
 */
 .mat-expansion-panel {
@@ -12,4 +12,9 @@
 }
 .mat-expansion-panel-header {
     margin: 1rem;
+}
+.button__container {
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
 }

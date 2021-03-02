@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule} from '@angular/material/expansion';
+import { MatButtonModule} from '@angular/material/button';
 import { CardHomeComponent } from './card-home/card-home.component';
 
 
@@ -17,6 +18,7 @@ import { CardHomeComponent } from './card-home/card-home.component';
   declarations: [CardHomeComponent],
   imports: [
     CommonModule,
+    MatButtonModule,
     MatExpansionModule,
     BrowserAnimationsModule
   ]
