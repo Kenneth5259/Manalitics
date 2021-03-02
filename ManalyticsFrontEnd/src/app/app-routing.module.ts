@@ -8,10 +8,13 @@
 // Angular imports
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CardHomeComponent } from './admin/card-home/card-home.component';
 
 
 //routes constant
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'admin', component: CardHomeComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
