@@ -8,7 +8,7 @@
 // Angular imports
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CardHomeComponent } from './admin/card-home/card-home.component';
+import { CardHomeComponent } from './admin/components/card-home/card-home.component';
 
 
 //routes constant

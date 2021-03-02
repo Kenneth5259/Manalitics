@@ -13,8 +13,3 @@
 .mat-expansion-panel-header {
     margin: 1rem;
 }
-.button__container {
-    margin: 3rem;
-    display: flex;
-    justify-content: center;
-}
