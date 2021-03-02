@@ -7,6 +7,8 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule} from '@angular/material/expansion';
 import { CardHomeComponent } from './card-home/card-home.component';
 
 
@@ -14,7 +16,9 @@ import { CardHomeComponent } from './card-home/card-home.component';
 @NgModule({
   declarations: [CardHomeComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MatExpansionModule,
+    BrowserAnimationsModule
   ]
 })
 export class AdminModule { }

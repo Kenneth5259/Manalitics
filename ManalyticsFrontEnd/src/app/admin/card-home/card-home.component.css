@@ -4,3 +4,12 @@
     Revision 1
     Styles for Card Home Component
 */
+.mat-expansion-panel {
+    width: 80vw;
+    margin: auto;
+    margin-top: 3rem;
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.4);
+}
+.mat-expansion-panel-header {
+    margin: 1rem;
+}
