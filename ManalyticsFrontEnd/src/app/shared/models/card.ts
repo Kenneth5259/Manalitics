@@ -1,3 +1,10 @@
+/**
+ * Kenneth Carroll
+ * 3/2/2021
+ * Card Model for application
+ * Revision 1
+ */
+
 class Card {
     id: number;
     name: string;

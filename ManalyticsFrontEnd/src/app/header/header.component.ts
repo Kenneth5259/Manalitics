@@ -1,3 +1,10 @@
+/**
+ * Kenneth Carroll
+ * 3/2/2021
+ * 
+ * Header component TS 
+ */
+// Angular Imports
 import { Component, OnInit } from '@angular/core';
 
 @Component({
